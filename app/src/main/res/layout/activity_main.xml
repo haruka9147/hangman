@@ -7,11 +7,27 @@
     android:layout_height="match_parent"
     android:id="@+id/container"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/hangman_bg"
     tools:context="com.example.kitadaharuka.hangman.MainActivity">
 
-    <ListView
-        android:id="@+id/list"
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/title"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <ToggleButton
+        android:id="@+id/play"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_toggle"
+        android:text="@string/play"
+        android:textOff="@string/play"
+        android:textOn="@string/play"
+        android:textColor="#99ffffff"
+        android:textSize="20sp"
+        />
 
 </LinearLayout>
