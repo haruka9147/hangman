@@ -29,7 +29,7 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
     private int game_count = 0;
     private int miss_count = 0;
     private int score = 0;
-    private int heart_num = 0;
+    private int heart_num = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +61,6 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
         hearts.add((ClipAnimationImageView) findViewById(R.id.heart1));
         hearts.add((ClipAnimationImageView) findViewById(R.id.heart2));
         hearts.add((ClipAnimationImageView) findViewById(R.id.heart3));
-
-        heartInvisible();
 
         // set TextView
         textArea = (LinearLayout) findViewById(R.id.textArea);
@@ -104,9 +102,9 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
     /**
      * heart image set invisible
      */
-    private void heartInvisible() {
+    private void heartVisible() {
         for(int i = 0; i < hearts.size(); i++) {
-            hearts.get(i).setVisibility(View.INVISIBLE);
+            hearts.get(i).show(new CircleClipAnimation());
         }
     }
 
@@ -184,11 +182,11 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
         // check the word
         if(miss_count == 10) {
             heartImage(heart_num);
-            if(heart_num == 2) { // no more hearts
+            if(heart_num == 0) { // no more hearts
                 showGameDialog(3, null);
             } else {
                 showGameDialog(1, answer);
-                heart_num++;
+                heart_num--;
             }
         } else if(isFinished()) {
             if(game_count == 9) { // no more question
@@ -234,7 +232,7 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
      * @param heart_num
      */
     private void heartImage(int heart_num) {
-        hearts.get(heart_num).show(new CircleClipAnimation());
+        hearts.get(heart_num).hide(new CircleClipAnimation());
     }
 
 
@@ -325,12 +323,12 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
      */
     private void resetGame() {
         miss_count = 0;
-        heart_num = 0;
+        heart_num = 2;
         game_count = 0;
         score = 0;
         shuffleArray();
         imageInvisible();
-        heartInvisible();
+        heartVisible();
         setTextViews(quiz.get(game_count).getWord());
         for(int i = 0; i < gridLayout.getChildCount(); i++) {
             Button b = (Button) gridLayout.getChildAt(i);
