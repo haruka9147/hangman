@@ -120,7 +120,7 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
         for(int i = 0; i < word.length(); i++) {
             TextView textView = new TextView(this);
             textView.setGravity(View.TEXT_ALIGNMENT_CENTER);
-            textView.setTextSize(25f);
+            textView.setTextSize(20);
             textView.setTextColor(Color.WHITE);
             textView.setPadding(10,10,10,10);
 
@@ -330,6 +330,7 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
         imageInvisible();
         heartVisible();
         setTextViews(quiz.get(game_count).getWord());
+        scoreText.setText(String.valueOf(score));
         for(int i = 0; i < gridLayout.getChildCount(); i++) {
             Button b = (Button) gridLayout.getChildAt(i);
             b.setEnabled(true);
