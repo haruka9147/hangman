@@ -1,13 +1,492 @@
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:id="@+id/container"-->
+    <!--android:orientation="vertical"-->
+    <!--android:gravity="center_horizontal"-->
+    <!--android:background="@drawable/hangman_bg"-->
+    <!--tools:context="com.example.kitadaharuka.hangman.MainActivity">-->
+
+ <!--</LinearLayout>-->
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/container"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:background="@drawable/hangman_bg"
-    tools:context="com.example.kitadaharuka.hangman.MainActivity">
+    android:layout_height="match_parent">
 
- </LinearLayout>
+  <ImageView
+      android:id="@+id/imageView"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:scaleType="fitXY"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0"
+      app:srcCompat="@drawable/hangman_bg" />
+
+  <com.example.kitadaharuka.hangman.ClipAnimationImageView
+      android:id="@+id/image1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="30dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="60dp"
+      android:src="@drawable/first"
+      app:layout_constraintBottom_toTopOf="@+id/textArea"
+      app:layout_constraintEnd_toEndOf="@+id/imageView"
+      app:layout_constraintHorizontal_bias="0.16"
+      app:layout_constraintStart_toStartOf="@+id/imageView" />
+
+  <com.example.kitadaharuka.hangman.ClipAnimationImageView
+      android:id="@+id/image2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="54dp"
+      android:src="@drawable/second"
+      app:layout_constraintBottom_toTopOf="@+id/image1"
+      app:layout_constraintStart_toStartOf="@+id/image1" />
+
+  <com.example.kitadaharuka.hangman.ClipAnimationImageView
+      android:id="@+id/image3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:src="@drawable/third"
+      app:layout_constraintBottom_toTopOf="@+id/image2"
+      app:layout_constraintStart_toStartOf="@+id/image2"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0" />
+
+  <com.example.kitadaharuka.hangman.ClipAnimationImageView
+      android:id="@+id/image4"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="94dp"
+      android:src="@drawable/forth"
+      app:layout_constraintStart_toEndOf="@+id/image2"
+      app:layout_constraintTop_toBottomOf="@+id/image3" />
+
+  <com.example.kitadaharuka.hangman.ClipAnimationImageView
+      android:id="@+id/image5"
+      android:layout_width="wrap_content"
+      android:layout_height="61dp"
+      android:layout_marginStart="67dp"
+      android:src="@drawable/fifth"
+      app:layout_constraintStart_toEndOf="@+id/image2"
+      app:layout_constraintTop_toBottomOf="@+id/image4" />
+
+  <com.example.kitadaharuka.hangman.ClipAnimationImageView
+      android:id="@+id/image6"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="94dp"
+      android:src="@drawable/six"
+      app:layout_constraintStart_toEndOf="@+id/image2"
+      app:layout_constraintTop_toBottomOf="@+id/image5" />
+
+  <com.example.kitadaharuka.hangman.ClipAnimationImageView
+      android:id="@+id/image7"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/seven"
+      app:layout_constraintEnd_toStartOf="@+id/image6"
+      app:layout_constraintTop_toTopOf="@+id/image6" />
+
+  <com.example.kitadaharuka.hangman.ClipAnimationImageView
+      android:id="@+id/image8"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/eight"
+      app:layout_constraintStart_toEndOf="@+id/image6"
+      app:layout_constraintTop_toTopOf="@+id/image6" />
+
+  <com.example.kitadaharuka.hangman.ClipAnimationImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/image9"/>
+
+  <com.example.kitadaharuka.hangman.ClipAnimationImageView
+      android:id="@+id/image10"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="64dp"
+      android:src="@drawable/seven"
+      app:layout_constraintStart_toEndOf="@+id/image2"
+      app:layout_constraintTop_toBottomOf="@+id/image6" />
+
+  <com.example.kitadaharuka.hangman.ClipAnimationImageView
+      android:id="@+id/image11"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/eight"
+      app:layout_constraintStart_toEndOf="@+id/image10"
+      app:layout_constraintTop_toBottomOf="@+id/image6" />
+
+  <LinearLayout
+      android:id="@+id/textArea"
+      android:layout_width="343dp"
+      android:layout_height="60dp"
+      android:layout_marginBottom="60dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      android:gravity="center"
+      android:orientation="horizontal"
+      app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent">
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:background="@drawable/border_bottom"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="a"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textSize="26sp" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:background="@drawable/border_bottom"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="b"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textSize="26sp" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:background="@drawable/border_bottom"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="c"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textSize="26sp" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:background="@drawable/border_bottom"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="d"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textSize="26sp" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:background="@drawable/border_bottom"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="e"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textSize="26sp" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:background="@drawable/border_bottom"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="f"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textSize="26sp" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:background="@drawable/border_bottom"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="g"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textSize="26sp" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:background="@drawable/border_bottom"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="h"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textSize="26sp" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:background="@drawable/border_bottom"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="i"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textSize="26sp" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:background="@drawable/border_bottom"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="j"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textSize="26sp" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:background="@drawable/border_bottom"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="k"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textSize="26sp" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:background="@drawable/border_bottom"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="l"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textSize="26sp" />-->
+
+  </LinearLayout>
+
+  <GridLayout
+      android:id="@+id/gridLayout"
+      android:layout_width="0dp"
+      android:layout_height="140dp"
+      android:layout_marginBottom="4dp"
+      android:layout_marginEnd="4dp"
+      android:layout_marginStart="4dp"
+      android:columnCount="9"
+      android:rowCount="3"
+      android:useDefaultMargins="true"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent">
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="a"
+        android:textColor="#fff"
+        android:id="@+id/button1"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="b"
+        android:textColor="#fff"
+        android:id="@+id/button2"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="c"
+        android:textColor="#fff"
+        android:id="@+id/button3"/>
+
+    <Button
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/button_round"
+        android:text="d"
+        android:textColor="#fff"
+        android:id="@+id/button4"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="e"
+        android:textColor="#fff"
+        android:id="@+id/button5"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="f"
+        android:textColor="#fff"
+        android:id="@+id/button6"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="g"
+        android:textColor="#fff"
+        android:id="@+id/button7"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="h"
+        android:textColor="#fff"
+        android:id="@+id/button8"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="i"
+        android:textColor="#fff"
+        android:id="@+id/button9"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="j"
+        android:textColor="#fff"
+        android:id="@+id/button10"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="k"
+        android:textColor="#fff"
+        android:id="@+id/button11"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="l"
+        android:textColor="#fff"
+        android:id="@+id/button12"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="m"
+        android:textColor="#fff"
+        android:id="@+id/button13"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="n"
+        android:textColor="#fff"
+        android:id="@+id/button14"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="o"
+        android:textColor="#fff"
+        android:id="@+id/button15"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="p"
+        android:textColor="#fff"
+        android:id="@+id/button16"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="q"
+        android:textColor="#fff"
+        android:id="@+id/button17"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="r"
+        android:textColor="#fff"
+        android:id="@+id/button18"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="s"
+        android:textColor="#fff"
+        android:id="@+id/button19"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="t"
+        android:textColor="#fff"
+        android:id="@+id/button20"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="u"
+        android:textColor="#fff"
+        android:id="@+id/button21"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="v"
+        android:textColor="#fff"
+        android:id="@+id/button22"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="w"
+        android:textColor="#fff"
+        android:id="@+id/button23"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="x"
+        android:textColor="#fff"
+        android:id="@+id/button24"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="y"
+        android:textColor="#fff"
+        android:id="@+id/button25"/>
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/button_round"
+        android:text="z"
+        android:textColor="#fff"
+        android:id="@+id/button26"/>
+
+  </GridLayout>
+
+</android.support.constraint.ConstraintLayout>
