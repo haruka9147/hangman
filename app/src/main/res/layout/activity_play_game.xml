@@ -32,6 +32,22 @@
       app:layout_constraintVertical_bias="1.0"
       app:srcCompat="@drawable/hangman_bg" />
 
+  <TextView
+      android:id="@+id/score"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="16dp"
+      android:drawableLeft="@drawable/score"
+      android:textSize="20sp"
+      android:drawablePadding="5dp"
+      android:text="0"
+      android:textColor="#fff"
+      app:layout_constraintBottom_toTopOf="@+id/image3"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
   <com.example.kitadaharuka.hangman.ClipAnimationImageView
       android:id="@+id/image1"
       android:layout_width="wrap_content"
@@ -109,12 +125,7 @@
       app:layout_constraintTop_toTopOf="@+id/image6" />
 
   <com.example.kitadaharuka.hangman.ClipAnimationImageView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:id="@+id/image9"/>
-
-  <com.example.kitadaharuka.hangman.ClipAnimationImageView
-      android:id="@+id/image10"
+      android:id="@+id/image9"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="64dp"
@@ -123,11 +134,11 @@
       app:layout_constraintTop_toBottomOf="@+id/image6" />
 
   <com.example.kitadaharuka.hangman.ClipAnimationImageView
-      android:id="@+id/image11"
+      android:id="@+id/image10"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:src="@drawable/eight"
-      app:layout_constraintStart_toEndOf="@+id/image10"
+      app:layout_constraintStart_toEndOf="@+id/image9"
       app:layout_constraintTop_toBottomOf="@+id/image6" />
 
   <LinearLayout
@@ -139,134 +150,14 @@
       android:layout_marginStart="8dp"
       android:gravity="center"
       android:orientation="horizontal"
-      app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+      app:layout_constraintBottom_toTopOf="@+id/alphabet_area"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent">
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="5dp"-->
-        <!--android:background="@drawable/border_bottom"-->
-        <!--android:padding="5dp"-->
-        <!--android:text="a"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textSize="26sp" />-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="5dp"-->
-        <!--android:background="@drawable/border_bottom"-->
-        <!--android:padding="5dp"-->
-        <!--android:text="b"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textSize="26sp" />-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="5dp"-->
-        <!--android:background="@drawable/border_bottom"-->
-        <!--android:padding="5dp"-->
-        <!--android:text="c"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textSize="26sp" />-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="5dp"-->
-        <!--android:background="@drawable/border_bottom"-->
-        <!--android:padding="5dp"-->
-        <!--android:text="d"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textSize="26sp" />-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="5dp"-->
-        <!--android:background="@drawable/border_bottom"-->
-        <!--android:padding="5dp"-->
-        <!--android:text="e"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textSize="26sp" />-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="5dp"-->
-        <!--android:background="@drawable/border_bottom"-->
-        <!--android:padding="5dp"-->
-        <!--android:text="f"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textSize="26sp" />-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="5dp"-->
-        <!--android:background="@drawable/border_bottom"-->
-        <!--android:padding="5dp"-->
-        <!--android:text="g"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textSize="26sp" />-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="5dp"-->
-        <!--android:background="@drawable/border_bottom"-->
-        <!--android:padding="5dp"-->
-        <!--android:text="h"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textSize="26sp" />-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="5dp"-->
-        <!--android:background="@drawable/border_bottom"-->
-        <!--android:padding="5dp"-->
-        <!--android:text="i"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textSize="26sp" />-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="5dp"-->
-        <!--android:background="@drawable/border_bottom"-->
-        <!--android:padding="5dp"-->
-        <!--android:text="j"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textSize="26sp" />-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="5dp"-->
-        <!--android:background="@drawable/border_bottom"-->
-        <!--android:padding="5dp"-->
-        <!--android:text="k"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textSize="26sp" />-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="5dp"-->
-        <!--android:background="@drawable/border_bottom"-->
-        <!--android:padding="5dp"-->
-        <!--android:text="l"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textSize="26sp" />-->
 
   </LinearLayout>
 
   <GridLayout
-      android:id="@+id/gridLayout"
+      android:id="@+id/alphabet_area"
       android:layout_width="0dp"
       android:layout_height="140dp"
       android:layout_marginBottom="4dp"
@@ -283,7 +174,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="a"
+        android:text="A"
         android:textColor="#fff"
         android:id="@+id/button1"/>
 
@@ -291,7 +182,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="b"
+        android:text="B"
         android:textColor="#fff"
         android:id="@+id/button2"/>
 
@@ -299,7 +190,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="c"
+        android:text="C"
         android:textColor="#fff"
         android:id="@+id/button3"/>
 
@@ -307,7 +198,7 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:background="@drawable/button_round"
-        android:text="d"
+        android:text="D"
         android:textColor="#fff"
         android:id="@+id/button4"/>
 
@@ -315,7 +206,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="e"
+        android:text="E"
         android:textColor="#fff"
         android:id="@+id/button5"/>
 
@@ -323,7 +214,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="f"
+        android:text="F"
         android:textColor="#fff"
         android:id="@+id/button6"/>
 
@@ -331,7 +222,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="g"
+        android:text="G"
         android:textColor="#fff"
         android:id="@+id/button7"/>
 
@@ -339,7 +230,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="h"
+        android:text="H"
         android:textColor="#fff"
         android:id="@+id/button8"/>
 
@@ -347,7 +238,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="i"
+        android:text="I"
         android:textColor="#fff"
         android:id="@+id/button9"/>
 
@@ -355,7 +246,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="j"
+        android:text="J"
         android:textColor="#fff"
         android:id="@+id/button10"/>
 
@@ -363,7 +254,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="k"
+        android:text="K"
         android:textColor="#fff"
         android:id="@+id/button11"/>
 
@@ -371,7 +262,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="l"
+        android:text="L"
         android:textColor="#fff"
         android:id="@+id/button12"/>
 
@@ -379,7 +270,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="m"
+        android:text="M"
         android:textColor="#fff"
         android:id="@+id/button13"/>
 
@@ -387,7 +278,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="n"
+        android:text="N"
         android:textColor="#fff"
         android:id="@+id/button14"/>
 
@@ -395,7 +286,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="o"
+        android:text="O"
         android:textColor="#fff"
         android:id="@+id/button15"/>
 
@@ -403,7 +294,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="p"
+        android:text="P"
         android:textColor="#fff"
         android:id="@+id/button16"/>
 
@@ -411,7 +302,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="q"
+        android:text="Q"
         android:textColor="#fff"
         android:id="@+id/button17"/>
 
@@ -419,7 +310,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="r"
+        android:text="R"
         android:textColor="#fff"
         android:id="@+id/button18"/>
 
@@ -427,7 +318,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="s"
+        android:text="S"
         android:textColor="#fff"
         android:id="@+id/button19"/>
 
@@ -435,7 +326,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="t"
+        android:text="T"
         android:textColor="#fff"
         android:id="@+id/button20"/>
 
@@ -443,7 +334,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="u"
+        android:text="U"
         android:textColor="#fff"
         android:id="@+id/button21"/>
 
@@ -451,7 +342,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="v"
+        android:text="V"
         android:textColor="#fff"
         android:id="@+id/button22"/>
 
@@ -459,7 +350,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="w"
+        android:text="W"
         android:textColor="#fff"
         android:id="@+id/button23"/>
 
@@ -467,7 +358,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="x"
+        android:text="X"
         android:textColor="#fff"
         android:id="@+id/button24"/>
 
@@ -475,7 +366,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="y"
+        android:text="Y"
         android:textColor="#fff"
         android:id="@+id/button25"/>
 
@@ -483,7 +374,7 @@
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/button_round"
-        android:text="z"
+        android:text="Z"
         android:textColor="#fff"
         android:id="@+id/button26"/>
 
