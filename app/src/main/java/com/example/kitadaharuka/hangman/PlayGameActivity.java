@@ -2,15 +2,10 @@ package com.example.kitadaharuka.hangman;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Point;
-import android.graphics.SweepGradient;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
@@ -25,16 +20,16 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
     private final String TAG = "PlayGameActivity";
     private ArrayList<Word> words;
     private ArrayList<Word> quiz;
-    private LinearLayout textArea;
     private ArrayList<TextView> textViews;
-    private ArrayList<Button> buttons;
+    private ArrayList<ClipAnimationImageView> hearts;
+    private ArrayList<ClipAnimationImageView> clipAnimationImageViews;
     private GridLayout gridLayout;
+    private LinearLayout textArea;
+    private TextView scoreText;
     private int game_count = 0;
     private int miss_count = 0;
     private int score = 0;
-    private int heart_num = 3;
-    private ArrayList<ClipAnimationImageView> clipAnimationImageViews;
-    private TextView scoreText;
+    private int heart_num = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +55,14 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
         clipAnimationImageViews.add((ClipAnimationImageView) findViewById(R.id.image10));
 
         imageInvisible();
+
+        // set heart invisible
+        hearts = new ArrayList<>();
+        hearts.add((ClipAnimationImageView) findViewById(R.id.heart1));
+        hearts.add((ClipAnimationImageView) findViewById(R.id.heart2));
+        hearts.add((ClipAnimationImageView) findViewById(R.id.heart3));
+
+        heartInvisible();
 
         // set TextView
         textArea = (LinearLayout) findViewById(R.id.textArea);
@@ -95,6 +98,15 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
     private void imageInvisible() {
         for(int i = 0; i < clipAnimationImageViews.size(); i++) {
             clipAnimationImageViews.get(i).setVisibility(View.INVISIBLE);
+        }
+    }
+
+    /**
+     * heart image set invisible
+     */
+    private void heartInvisible() {
+        for(int i = 0; i < hearts.size(); i++) {
+            hearts.get(i).setVisibility(View.INVISIBLE);
         }
     }
 
@@ -167,23 +179,35 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
 
         btn.setEnabled(false);
 
+
+
         // check the word
         if(miss_count == 10) {
-            showDialog(false, answer);
-        } else if(isFinished()) {
-            score++;
-            game_count++;
-            setTextViews(quiz.get(game_count).getWord());
-            scoreText.setText(String.valueOf(score));
-            for(int i = 0; i < gridLayout.getChildCount(); i++) {
-                Button b = (Button) gridLayout.getChildAt(i);
-                b.setEnabled(true);
-                b.setTextColor(Color.WHITE);
-                b.setBackgroundResource(R.drawable.button_round);
+            heartImage(heart_num);
+            if(heart_num == 2) { // no more hearts
+                showGameDialog(3, null);
+            } else {
+                showGameDialog(1, answer);
+                heart_num++;
             }
-            imageInvisible();
-            resetCount();
-            showDialog(true, null);
+        } else if(isFinished()) {
+            if(game_count == 9) { // no more question
+                showGameDialog(2, null);
+            } else {
+                score++;
+                game_count++;
+                setTextViews(quiz.get(game_count).getWord());
+                scoreText.setText(String.valueOf(score));
+                for(int i = 0; i < gridLayout.getChildCount(); i++) {
+                    Button b = (Button) gridLayout.getChildAt(i);
+                    b.setEnabled(true);
+                    b.setTextColor(Color.WHITE);
+                    b.setBackgroundResource(R.drawable.button_round);
+                }
+                imageInvisible();
+                miss_count = 0;
+                showGameDialog(0, null);
+            }
         }
     }
 
@@ -206,41 +230,114 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
     }
 
     /**
+     * show heart image
+     * @param heart_num
+     */
+    private void heartImage(int heart_num) {
+        hearts.get(heart_num).show(new CircleClipAnimation());
+    }
+
+
+    /**
      * show dialog
      * @param result
      * @param answer
      */
-    private void showDialog(boolean result, String answer) {
-        if(result) {
-            new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
-                    .setTitleText("You win!")
-                    .show();
-        } else {
-            new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("You lose...")
-                    .setContentText("Answer: " + answer)
-                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            game_count++;
-                            setTextViews(quiz.get(game_count).getWord());
-                            for(int i = 0; i < gridLayout.getChildCount(); i++) {
-                                Button b = (Button) gridLayout.getChildAt(i);
-                                b.setEnabled(true);
-                                b.setTextColor(Color.WHITE);
-                                b.setBackgroundResource(R.drawable.button_round);
+    private void showGameDialog(int result, String answer) {
+        switch (result){
+            case 0:
+                new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("You win!")
+                        .setConfirmText("OK")
+                        .show();
+                break;
+            case 1:
+                new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText("You lose...")
+                        .setConfirmText("OK")
+                        .setContentText("Answer: " + answer)
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                game_count++;
+                                setTextViews(quiz.get(game_count).getWord());
+                                for(int i = 0; i < gridLayout.getChildCount(); i++) {
+                                    Button b = (Button) gridLayout.getChildAt(i);
+                                    b.setEnabled(true);
+                                    b.setTextColor(Color.WHITE);
+                                    b.setBackgroundResource(R.drawable.button_round);
+                                }
+                                imageInvisible();
+                                miss_count = 0;
+                                sDialog.dismissWithAnimation();
                             }
-                            imageInvisible();
-                            resetCount();
-                            sDialog.dismissWithAnimation();
-                        }
-                    })
-                    .show();
+                        })
+                        .show();
+                break;
+            case 2:
+                new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Congratulations!")
+                        .setContentText("Do you want to play again?")
+                        .setConfirmText("YES")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                resetGame();
+                                sDialog.dismissWithAnimation();
+                            }
+                        })
+                        .setCancelText("NO")
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
+                                finish();
+                            }
+                        })
+                        .show();
+                break;
+            default:
+                new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText("No more heart...")
+                        .setContentText("Do you want to play again?")
+                        .setConfirmText("YES")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                resetGame();
+                                sDialog.dismissWithAnimation();
+                            }
+                        })
+                        .setCancelText("NO")
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
+                                finish();
+                            }
+                        })
+                        .show();
         }
     }
 
-    private void resetCount() {
+    /**
+     * reset game
+     */
+    private void resetGame() {
         miss_count = 0;
+        heart_num = 0;
+        game_count = 0;
+        score = 0;
+        shuffleArray();
+        imageInvisible();
+        heartInvisible();
+        setTextViews(quiz.get(game_count).getWord());
+        for(int i = 0; i < gridLayout.getChildCount(); i++) {
+            Button b = (Button) gridLayout.getChildAt(i);
+            b.setEnabled(true);
+            b.setTextColor(Color.WHITE);
+            b.setBackgroundResource(R.drawable.button_round);
+        }
     }
 
 
