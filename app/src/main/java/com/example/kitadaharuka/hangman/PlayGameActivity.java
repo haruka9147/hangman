@@ -185,6 +185,16 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
             if(heart_num == 0) { // no more hearts
                 showGameDialog(3, null);
             } else {
+                game_count++;
+                setTextViews(quiz.get(game_count).getWord());
+                for(int i = 0; i < gridLayout.getChildCount(); i++) {
+                    Button b = (Button) gridLayout.getChildAt(i);
+                    b.setEnabled(true);
+                    b.setTextColor(Color.WHITE);
+                    b.setBackgroundResource(R.drawable.button_round);
+                }
+                imageInvisible();
+                miss_count = 0;
                 showGameDialog(1, answer);
                 heart_num--;
             }
@@ -257,16 +267,6 @@ public class PlayGameActivity extends AppCompatActivity implements View.OnClickL
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
-                                game_count++;
-                                setTextViews(quiz.get(game_count).getWord());
-                                for(int i = 0; i < gridLayout.getChildCount(); i++) {
-                                    Button b = (Button) gridLayout.getChildAt(i);
-                                    b.setEnabled(true);
-                                    b.setTextColor(Color.WHITE);
-                                    b.setBackgroundResource(R.drawable.button_round);
-                                }
-                                imageInvisible();
-                                miss_count = 0;
                                 sDialog.dismissWithAnimation();
                             }
                         })
